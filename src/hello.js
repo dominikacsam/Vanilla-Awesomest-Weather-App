@@ -31,6 +31,8 @@ function displayWeatherCondition(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  leTemperature = response.data.main.temp;
+
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   city.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -57,5 +59,30 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
+function displayFaTemperature(event) {
+  event.preventDefault();
+  let faTemperature = (ceTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(faTemperature);
+  ceLink.classList.remove("active");
+  faLink.classList.add("active");
+}
+
+function displayCeTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(ceTemperature);
+  ceLink.classList.add("active");
+  faLink.classList.remove("active");
+}
+
+let ceTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let faLink = document.querySelector("#fa-link");
+faLink.addEventListener("click", displayFaTemperature);
+
+let ceLink = document.querySelector("#ce-link");
+ceLink.addEventListener("click", displayCeTemperature);

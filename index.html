@@ -46,7 +46,7 @@
           </ul>
           <div class="row">
             <div class="col-6">
-              <div class="clearfix">
+              <div class="clearfix weather-temperature">
                 <img
                   src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
                   id="icon"
@@ -54,7 +54,10 @@
                 />
                 <div class="float-left">
                   <span class="temperature" id="temperature">27</span
-                  ><span class="units">°C | °F</span>
+                  ><span class="units"
+                    ><a href="#" id="ce-link" class="active">°C</a> |
+                    <a href="#" id="fa-link">°F</a></span
+                  >
                 </div>
               </div>
             </div>
